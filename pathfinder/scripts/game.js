@@ -4,14 +4,14 @@
  *      The view of the game is represented by GameView module (game-view.js)
  *      The game assembles the Board (board.js) and Position (position.js) objects.
  */
-define(['board', 'position', 'game-view', 'solver'], function(Board, Position, GameView, Solver){
+define(['board', 'position', 'game-view', 'solver-service'], function(Board, Position, GameView, SolverService){
 
     // TODO Discuss the difference between prototype. and this. as top down execution
     return function Game(options) {
         // Model objects that store game state
         var board = new Board(options.rows, options.cols)
         var goalPos = new Position().set(options.targetPos)
-        var agentPos = new Position().set(options.startPos)
+        var actorPos = new Position().set(options.startPos)
 
         // View object - Pass Presenter callbacks for event handling
         var gameView = new GameView(options, {
@@ -20,7 +20,7 @@ define(['board', 'position', 'game-view', 'solver'], function(Board, Position, G
                 gameView.reset()
             },
             onNewStartPosition: function(row, col) {
-                agentPos = new Position(row, col)
+                actorPos = new Position(row, col)
                 gameView.reset()
             },
             onNewGoalPosition: function(row, col) {
@@ -30,19 +30,19 @@ define(['board', 'position', 'game-view', 'solver'], function(Board, Position, G
         })
 
         // Private method
-        function moveAgent(nextPos) {
+        function moveActor(nextPos) {
             if (board.isValidMove(nextPos)) {
-                gameView.moveAgent(agentPos, nextPos)
-                agentPos.set(nextPos)
+                gameView.moveActor(actorPos, nextPos)
+                actorPos.set(nextPos)
             }
         }
 
         this.start = function() { gameView.start() }
 
         this.solve = function() {
-            var solution = Solver.solve(board, agentPos, goalPos)
+            var solution = SolverService.solve(board, actorPos, goalPos)
             solution.forEach(function(position) {
-                moveAgent(position)
+                moveActor(position)
             })
         }
 

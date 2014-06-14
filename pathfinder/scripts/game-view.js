@@ -72,7 +72,7 @@ define(['jquery', 'position'], function($, Position){
 
         }
 
-        this.moveAgent = function(startPos, targetPos) {
+        this.moveActor = function(startPos, targetPos) {
             var source = new Position().set(startPos)
             var dest = new Position().set(targetPos)
 

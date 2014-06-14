@@ -1,0 +1,51 @@
+
+.container {
+    margin: 20px;
+    float: left;
+}
+
+.grid {
+    border: solid 1px #C0C0C0;
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.5);
+    margin-top: 10px;
+}
+
+.square {
+    width: 40px;
+    height: 40px;
+    padding: 0px;
+    float: left;
+    box-sizing: border-box; /* Render border inside square */
+}
+
+.square-checker {
+    background-color: #ddddca;
+}
+
+.square-obstacle {
+    background: url(../images/wall.jpg) no-repeat;
+    background-size: 100%;
+}
+
+.piece {
+    display: block;
+    cursor: pointer;
+    font-size: 35px;text-align: center;vertical-align: middle;line-height: 40px;
+    z-index: 100;position: absolute;
+    width: 40px;height: 40px;
+}
+
+.visited-square {
+     border: 1px lightgrey dashed;
+     background-color: lightcyan;
+ }
+
+.start {
+    background: url(../images/cat.png) no-repeat;
+    background-size: 100%;
+}
+
+.goal {
+    background: url(../images/cake.png) no-repeat;
+    background-size: 100%;
+}

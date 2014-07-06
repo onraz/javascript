@@ -1,1 +1,1 @@
-javascript:(function(){document.body.appendChild(document.createElement('script')).src='coursera-dl.js';})();
+javascript:(function(){document.body.appendChild(document.createElement('script')).src='https://code.jquery.com/jquery-2.1.1.min.js';document.body.appendChild(document.createElement('script')).src='https://raw.githubusercontent.com/openraz/javascript/master/coursera-downloader/coursera-dl.js';})();
